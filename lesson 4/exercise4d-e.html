@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+    .main-heading{
+        font-family: Arial;
+        font-weight: 500;
+    }
+    .main-inputs{
+       padding:10px 15px;
+       width: 190px;
+       margin-top: 10px;
+       border-radius: 5px;
+    }
+    .auth-button{
+        background-color: rgb(0,123,255);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top:20px ; 
+        margin-left: 5px;
+        padding: 10px 15px;   
+    }
+    .password-show-button{
+        margin-left: 10px;
+    }
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        function LoginForm(){
+            const [showPassword,setShowPassword] = React.useState(false)
+            function changeButtonState(){
+                setShowPassword(!showPassword)  
+            }
+            return(
+                <>
+                    <div >
+                        <input 
+                            type="text" 
+                            placeholder="Email" 
+                            className="main-inputs"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type={showPassword? "text" : "password"}
+                            placeholder="Password" 
+                            className="main-inputs"
+                        />   
+                        <button 
+                            className="password-show-button"
+                            onClick={changeButtonState}
+                        >{showPassword? "hide" : "show"}</button> 
+                    </div>
+                    <button className="auth-button">Login</button>
+                    <button className="auth-button">Sign Up</button>
+                </>
+            );
+        }
+           
+        function App(){
+            return(
+                <>
+                    <h2 className="main-heading">Hello, welcome to my website</h2>
+                    <LoginForm />             
+                </>
+            );
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

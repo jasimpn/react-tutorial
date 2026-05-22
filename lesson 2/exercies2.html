@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+    .ProductDeatils{
+        border: 2px solid black;
+        display: inline-block;
+        margin: 10px;
+        padding: 5px;
+    }
+    .productImg{
+        width: 200Px;
+    }
+
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const div =(
+            <div>
+                <button>Hello world</button>
+                <p>This is a paragraph</p>
+             </div>
+        );
+        function ProductDeatils({product,price,discountPrice,imageSrc}){
+            return(
+                <div class="ProductDeatils">
+                    <img class="productImg" src={imageSrc} />
+                    <p>{product}</p>
+                    {!discountPrice && <p>Price: ${price}</p>}
+                    {discountPrice && (
+                            <>
+                                <p><strike>Price: ${price}</strike></p>
+                                <p>Discount price: ${discountPrice}</p>
+                            </>
+                        )
+                    }
+             
+                    <button>Add to cart</button>
+                </div>
+            );
+        }
+        function App(){
+            return(
+                <>
+                    <ProductDeatils
+                        imageSrc="images/cotton-socks.png"
+                        product="Cotton socks"
+                        price= "10.90"
+                        
+                    />
+                    <ProductDeatils
+                        imageSrc="images/tennis-balls.png"
+                        product="Tennis ball"
+                        price= "6.00"
+                        discountPrice="5.45"
+                    />
+                    <ProductDeatils
+                        imageSrc="images/plain-t-shirt.png"
+                        product="Plain T Shirt"
+                        price= "7.99"
+                        discountPrice="5.45"
+                    />
+                    
+                </>
+            );
+        }
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
