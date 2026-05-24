@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Chatbot } from 'supersimpledev'
-
+import dayjs from 'dayjs'
+import '../styles/ChatInput.css'
+const time = dayjs().valueOf();
 export function ChatInput({chatMessages,setChatMeesages}){
             const [inputText,setInputText] = useState('');
             function saveInputText(event){   
@@ -20,7 +22,8 @@ export function ChatInput({chatMessages,setChatMeesages}){
                         {
                             message:inputText,
                             profile:"user",
-                            id:crypto.randomUUID()
+                            id:crypto.randomUUID(),
+                            time:dayjs(time).format('h:mma')
                         }
                     ]
                     setChatMeesages(newChatMessages);
@@ -33,7 +36,8 @@ export function ChatInput({chatMessages,setChatMeesages}){
                         {
                             message:response,
                             profile:"robot",
-                            id:crypto.randomUUID()
+                            id:crypto.randomUUID(),
+                            time:dayjs(time).format('h:mma')
                         }
                     ]);
                 }  
@@ -44,7 +48,8 @@ export function ChatInput({chatMessages,setChatMeesages}){
                     {
                         message:inputText,
                         profile:"user",
-                        id:crypto.randomUUID()
+                        id:crypto.randomUUID(),
+                        time:dayjs(time).format('h:mma')
                     }
                 ]
                 setChatMeesages(newChatMessages);
@@ -57,10 +62,15 @@ export function ChatInput({chatMessages,setChatMeesages}){
                     {
                         message:response,
                         profile:"robot",
-                        id:crypto.randomUUID()
+                        id:crypto.randomUUID(),
+                        time:dayjs(time).format('H:mma')
                     }
                 ]);
 
+            }
+            function clearChatMessages(){
+                setChatMeesages([]);
+              
             }
             return (
                 <div className="chat-input-container">
@@ -75,6 +85,7 @@ export function ChatInput({chatMessages,setChatMeesages}){
                         size="30"
                     />
                     <button className="input-button" onClick={sendInputText}>Send</button>
+                    <button className="clear-button" onClick={clearChatMessages}>Clear</button>
                 </div>
             );
         }

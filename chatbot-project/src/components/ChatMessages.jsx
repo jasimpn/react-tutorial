@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { ChatMessage } from '../components/ChatMessage'
+import '../styles/ChatMessages.css'
 export function ChatMessages ({chatMessages}){
             const chatMesssagesRef = useRef(null);
 
@@ -18,6 +19,7 @@ export function ChatMessages ({chatMessages}){
                                     message={chatMessage.message}
                                     profile={chatMessage.profile}
                                     key={chatMessage.id}
+                                    time={chatMessage.time}
                                 />
                             )
                         })
