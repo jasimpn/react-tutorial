@@ -1,6 +1,6 @@
 import { Header } from '../components/Header'
 import './HomePage.css'
-import checkMarkIcon from '../assets/icons/checkmark.png'
+import checkMarkIcon from '../assets/images/icons/checkmark.png'
 export function HomePage() {
   return (
     <>

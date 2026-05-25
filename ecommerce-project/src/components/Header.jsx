@@ -1,9 +1,9 @@
 import { Link } from 'react-router'
 import './Header.css'
-import logoWhite from '../assets/logo-white.png'
-import mobileLogoWhite from '../assets/mobile-logo-white.png'
-import searchIcon from '../assets/icons/search-icon.png'
-import cartIcon from '../assets/icons/cart-icon.png'
+import logoWhite from '../assets/images/logo-white.png'
+import mobileLogoWhite from '../assets/images/mobile-logo-white.png'
+import searchIcon from '../assets/images/icons/search-icon.png'
+import cartIcon from '../assets/images/icons/cart-icon.png'
 export function Header() {
     return (
         <div className="header">
